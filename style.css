@@ -1,0 +1,620 @@
+
+:root {
+    /* FONTES */
+    --font-logo: 'Allura', cursive;
+    --font-main: 'Inter', sans-serif;
+
+    /* --- TEMA PADRÃO (CLARO / LIGHT) --- */
+    --bg-color: #f0f2f5;
+    --text-color: #1a1a1a;
+    --card-bg-color: #ffffff;
+    --border-color: #d1d5db;
+    --primary-red: #e63946;
+    --hero-overlay-color: rgba(255, 255, 255, 0.6);
+    --grid-color: rgba(0, 0, 0, 0.05);
+    --card-glow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+
+    /* Variáveis do mouse */
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+/* --- TEMA ESCURO --- */
+body.dark-theme { 
+    --bg-color: #0a0a0a;
+    --text-color: #e0e0e0;
+    --card-bg-color: rgba(20, 20, 20, 0.8);
+    --border-color: #333333;
+    --primary-red: #ff2a4d;
+    --hero-overlay-color: rgba(0, 0, 0, 0.7);
+    --grid-color: rgba(255, 0, 51, 0.15);
+    --card-glow: 0 0 20px rgba(255, 42, 77, 0.2);
+}
+
+/* --- ANIMAÇÃO DO FUNDO --- */
+@keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden;
+}
+
+/* NAVEGAÇÃO */
+nav {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.logo {
+    font-family: var(--font-logo);
+    font-size: 2rem;
+    color: var(--primary-red);
+    text-decoration: none;
+}
+.theme-button {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    width: 35px; height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex; align-items: center; justify-content: center;
+}
+.theme-button:hover {
+    background-color: var(--primary-red);
+    color: #fff;
+    border-color: var(--primary-red);
+}
+
+/* HERO SECTION */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+}
+.hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--hero-overlay-color);
+}
+.hero-content {
+    position: relative; z-index: 2;
+    max-width: 800px; padding: 2rem;
+}
+.greeting { font-size: 1.1rem; color: var(--text-color); opacity: 0.9; }
+.wave { display: inline-block; animation: wave-animation 2.5s infinite; }
+.hero-content h1 { font-size: 3rem; font-weight: 900; margin: 0.5rem 0; } 
+.hero-content h1 strong { color: var(--primary-red); }
+.tagline { margin: 1.5rem 0; font-size: 1rem; line-height: 1.6; opacity: 0.9; }
+
+@keyframes wave-animation { 0% { transform: rotate(0.0deg) } 10% { transform: rotate(14.0deg) } 20% { transform: rotate(-8.0deg) } 30% { transform: rotate(14.0deg) } 40% { transform: rotate(-4.0deg) } 50% { transform: rotate(10.0deg) } 60% { transform: rotate(0.0deg) } 100% { transform: rotate(0.0deg) } }
+
+.social-icons { margin-top: 1rem; }
+.social-icons a {
+    color: var(--text-color);
+    font-size: 1.5rem; margin: 0 0.8rem;
+    transition: all 0.3s ease;
+}
+.social-icons a:hover {
+    color: var(--primary-red);
+    transform: translateY(-3px);
+}
+
+/* --- SEÇÃO DE TECNOLOGIAS (ANEL RGB) --- */
+.tech-section {
+    padding: 2rem 0;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+@keyframes spin-rainbow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.tech-card {
+    position: relative;
+    background-color: var(--card-bg-color);
+    border-radius: 50%;
+    width: 60px; height: 60px;
+    margin: 10px auto;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 3px;
+    border: none; 
+    z-index: 1;
+}
+/* Anel Colorido */
+.tech-card::before {
+    content: '';
+    position: absolute; z-index: -1;
+    top: -3px; left: -3px; right: -3px; bottom: -3px;
+    border-radius: 50%;
+    background: conic-gradient(#ffffff, #eeebe8, #ffffff, #edf0ed, #9b94a1, #dedae0, #9b94a1, #eeebeb);
+    animation: spin-rainbow 8s linear infinite;
+}
+.tech-card:hover { transform: scale(1.1); }
+.tech-card img { height: 24px; width: 24px; z-index: 2; }
+.tech-name { font-size: 0.6rem; font-weight: 700; color: var(--text-color); text-transform: uppercase; z-index: 2; }
+
+/* GERAIS */
+main { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+.section-title {
+    text-align: center; font-size: 2rem; margin-bottom: 2rem;
+    color: var(--primary-red);
+}
+
+/* CYBER BG */
+.cyber-bg {
+    animation: gridMove 4s linear infinite;
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background: 
+        radial-gradient(circle at 50% 50%, transparent 20%, var(--bg-color) 100%),
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* AUTORA E FOTO */
+.author-caption {
+   font-size: 0.7rem; font-weight: 900; text-transform: uppercase;
+   color: #000000; text-align: center; letter-spacing: 1px; display: block;
+}
+body.dark-theme .author-caption { color: #ffffff; }
+
+.about-wrapper {
+    display: grid;
+    grid-template-columns: 200px 1fr; /* Foto 200px | Resto Projetos */
+    gap: 3rem; align-items: start;
+}
+
+.mini-certs {
+    display: flex; gap: 15px; justify-content: center;
+    margin-top: 15px; font-size: 1.5rem; color: var(--primary-red);
+}
+
+.about-photo {
+    width: 100%; height: auto;
+    border-radius: 15px; border: 2px solid var(--border-color);
+    box-shadow: 10px 10px 0px var(--card-bg-color); 
+    margin-bottom: 10px;
+}
+.about-image-container {
+  display: flex; flex-direction: column; align-items: center; width: 100%;
+}
+
+/* --- PROJETOS QUADRADOS PEQUENOS (FINAL E LIMPO) --- */
+
+.projects-title {
+    font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-color);
+    display: flex; align-items: center; gap: 10px;
+    font-style: italic; font-weight: 200; letter-spacing: 1px;
+}
+
+.projects-grid-3d {
+    display: grid;
+    /* Colunas responsivas, mínimo 200px de largura */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+}
+
+/* O Bloco Quadrado */
+.redflag-card {
+    height: 240px; /* Quadrado pequeno fixo */
+    width: 100%;
+    
+    background: var(--card-bg-color);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    
+    display: flex; flex-direction: column;
+    overflow: hidden; /* Corta o que sobrar */
+    
+    /* 3D */
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform 0.1s ease, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.redflag-card:hover {
+    border-color: var(--primary-red);
+    box-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
+    z-index: 10;
+    transform: perspective(1000px) scale(1.05) !important;
+}
+
+/* Imagem ocupa 50% da altura */
+.project-img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Texto ocupa 50% da altura */
+.card-content {
+    height: 50%;
+    padding: 0.8rem;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+}
+
+.redflag-card h3 {
+    font-size: 0.9rem; font-weight: 800; color: var(--text-color);
+    margin: 0 0 5px 0;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.redflag-card p {
+    font-size: 0.75rem; line-height: 1.2;
+    color: var(--text-color); opacity: 0.9;
+    margin: 0;
+    /* Corta em 3 linhas máx */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.card-link {
+    font-size: 0.7rem; 
+    font-weight: bold; 
+    color: var(--primary-red);
+    text-decoration: none; 
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center; 
+    gap: 5px;
+    position: relative;       /* Necessário para o z-index funcionar */
+    z-index: 1000;            /* Joga o link para frente de todo o efeito 3D */
+    pointer-events: auto;     /* Garante que o mouse reconheça o clique */
+    cursor: pointer;          /* Garante a mãozinha do mouse */
+}
+
+/* CERTIFICADOS */
+.certificates {
+    margin-top: -5rem; /* Empurra a seção inteira para baixo */
+    padding-top: -2rem; /* Um pouco de respiro extra interno */
+}
+.certificates-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem; margin-top: 4rem;
+}
+.cert-card {
+    background: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px; padding: 1.5rem; text-align: center;
+    transition: 0.3s; position: relative; overflow: hidden;
+}
+.cert-card:hover { transform: translateY(-5px); border-color: var(--primary-red); }
+.cert-icon { font-size: 2rem; color: var(--primary-red); margin-bottom: 1rem; }
+.cert-title { font-size: 0.9rem; font-weight: 700; color: var(--text-color); }
+
+/* FOOTER */
+footer {
+    text-align: center; padding: 2rem; border-top: -6px solid var(--border-color);
+    margin-top: 4rem; font-size: 0.9rem; color: var(--text-color); opacity: 0.7;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    .about-wrapper { grid-template-columns: 1fr; } 
+    .about-image-container { max-width: 200px; margin: 0 auto; }
+}
+
+/* --- CORREÇÃO DE ESPAÇAMENTO (FORÇADA) --- */
+
+/* 1. Empurra o final da seção de projetos (Sobre) */
+.about {
+    margin-bottom: 80px !important; /* Cria um buraco embaixo dos projetos */
+}
+
+/* 2. Empurra o começo da seção de Certificados */
+.certificates {
+    margin-top: 50px !important; /* Cria um buraco em cima dos certificados */
+    padding-top: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Uma linha fina pra você ver a separação */
+}
+
+/* 3. Previne que os cards 3D invadam o espaço */
+.projects-grid-3d {
+    margin-bottom: 80px;
+}
+/* --- CARROSSEL DE PRINTS --- */
+
+.certificates {
+    margin-top: 50px !important;
+    padding-bottom: 50px;
+    position: relative;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* O Card que segura o print */
+.cert-print-card {
+    display: block;
+    background: var(--card-bg-color);
+    border-radius: 12px;
+    overflow: hidden; /* Corta a imagem se ela vazar */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    text-decoration: 0.3s ease; /* Tira sublinhado do link */
+}
+
+/* Hover no card inteiro */
+.cert-print-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    border-color: var(--primary-red);
+}
+
+/* A área da imagem */
+.print-img-container {
+    width: 200%;
+    height: 350px; /* Aumentei para 240px (BEM GRANDE) */
+    
+    /* O SEGREDO: TRANSPARENT. Isso mata a linha branca no dark mode */
+    background-color: transparent !important; 
+    
+    position: relative;
+    overflow: visible; /* Deixa o zoom sair pra fora se precisar */
+    border: none !important;
+}
+
+.print-img-container img {
+    width: 100%;
+    height: 300%;
+    
+    /* CONTAIN: Mostra o certificado inteiro, flutuando no espaço */
+    object-fit: contain; 
+    object-position: center;
+    
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    /* Uma leve sombra só na imagem (não no quadrado) para dar profundidade */
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+}
+
+/* Zoom na imagem ao passar o mouse */
+.cert-print-card:hover .print-img-container img {
+    transform: scale(1.15); /* Aumenta 15% (Zoom bem visível) */
+    z-index: 100;
+    filter: drop-shadow(0 10px 25px rgba(230, 57, 70, 0.4));
+}
+
+/* Ajustes do Swiper */
+.swiper-button-next, .swiper-button-prev {
+    display: none
+}
+
+.swiper-pagination-bullet-active { background-color: var(--primary-red); }
+/* Dá um espacinho nas laterais do carrossel para não cortar a sombra */
+/* =============================================================
+   CARROSSEL FINAL: EFEITO "POP-UP" GIGANTE PARA RECRUTADOR
+   ============================================================= */
+
+/* 1. O CONTAINER (PRECISA DEIXAR A IMAGEM SAIR PRA FORA) */
+.myCertSwiper { 
+    margin-top: -40px !important;
+    /* Padding alto em cima e embaixo para o zoom não ser cortado */
+    padding: 80px 0 !important; 
+    width: 100%;
+    max-width: 100%;
+    background: transparent;
+    
+    /* O SEGREDO: VISIBLE. Isso deixa a imagem crescer pra fora da caixa */
+    overflow: visible !important; 
+}
+
+/* 2. O CARD (BASE) */
+.cert-print-card {
+    display: block;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito de mola */
+    z-index: 1; /* Fica normal quando quieto */
+    position: relative;
+}
+
+/* 3. A ÁREA DA IMAGEM (TAMANHO NORMAL) */
+.print-img-container {
+    width: 100%;
+    height: 260px; /* Tamanho normal na fila */
+    background-color: transparent !important; 
+    position: relative;
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 4. A FOTO */
+.print-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Mostra inteiro */
+    object-position: center;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3)); /* Sombra leve */
+}
+
+.print-title {
+    display: block !important; /* Garante que apareça */
+    margin-top: -75px; /* Espacinho da imagem */
+    text-align: center;
+    transition: opacity 0.2s ease; 
+}
+
+.print-title h4 {
+    font-family: Arial,sans-serif; /* Fonte Arial limpa */
+    font-size: 0.75rem;       /* Tamanho legível */
+    font-weight: 400;       /* Negrito */
+    color: var(--text-color); /* Cor automática (Preto ou Branco) */
+    text-transform: uppercase; /* Letras maiúsculas pra ficar Pro */
+    letter-spacing: 0.5px;
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* ==================================================
+   A MÁGICA DO ZOOM (HOVER)
+   ================================================== */
+
+/* Quando passa o mouse no card: */
+.cert-print-card:hover {
+    z-index: 9999 !important; /* Joga ele NA FRENTE DE TUDO NO SITE */
+    transform: scale(2.5) translateY(-30px); /* AUMENTA 2X (DOBRO) e sobe um pouco */
+}
+
+/* Melhora a sombra quando está gigante pra dar destaque 3D */
+.cert-print-card:hover .print-img-container img {
+    filter: drop-shadow(0 10px 10px rgba(247, 14, 14, 0.39));
+}
+
+/* O TRUQUE: Quando passa o mouse no card, o título fica INVISÍVEL */
+.cert-print-card:hover .print-title {
+    opacity: 0; /* Desaparece */
+}
+
+/* Esconde setas e paginação (Clean) */
+.swiper-button-next, .swiper-button-prev, .swiper-pagination { display: none !important; }
+
+/* =======================================================
+   RODAPÉ COM BONEQUINHA (CORRIGIDO: SEM CORTES)
+   ======================================================= */
+
+footer {
+    text-align: center; 
+    padding: 2rem; 
+    margin-top: 100px; 
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem; 
+    color: var(--text-color); 
+    opacity: 0.9;
+    
+    /* OBRIGATÓRIO: Para segurar a posição */
+    position: relative; 
+    
+    /* 👇 MUDANÇA IMPORTANTE 1: */
+    /* Removi o 'overflow: hidden'. Agora ela não será cortada! */
+    /* overflow: visible é o padrão, então nem precisamos escrever. */
+
+    /* 👇 MUDANÇA IMPORTANTE 2: */
+    /* Aumentei o espaço interno embaixo para ela caber com folga */
+    padding-bottom: 60px; 
+}
+
+/* O GRUPO (Texto + Boneca) */
+/* =======================================================
+   RODAPÉ: BOTÃO NO MEIO | BONECA NA DIREITA
+   ======================================================= */
+
+/* O CONTAINER (Agora é uma camada invisível por cima do rodapé inteiro) */
+.footer-download-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Ocupa a largura total */
+    height: 100%; /* Ocupa a altura total do footer */
+    pointer-events: none; /* OBRIGATÓRIO: Deixa clicar no copyright lá no fundo */
+    z-index: 10;
+}
+
+/* 1. O BOTÃO (CENTRALIZADO NA TELA) */
+.footer-download-link {
+    pointer-events: auto; /* Reativa o clique no botão */
+    
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* O segredo da centralização perfeita */
+    bottom: 90px; /* Altura flutuando acima do texto */
+    
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+    background: var(--card-bg-color);
+    padding: 10px 25px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.footer-download-link:hover {
+    color: #fff;
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    transform: translateX(-50%) translateY(-3px); /* Mantém centralizado e sobe */
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+}
+
+/* 2. A BONECA (MANTIDA NA DIREITA) */
+.footer-download-img {
+    pointer-events: auto;
+    
+    position: absolute;
+    right: 5%; /* Canto direito */
+    bottom: -0px; /* Encostada no chão */
+    
+    height: 195px; /* Tamanho da boneca */
+    width: auto;
+    filter: drop-shadow(5px 5px 8px rgba(0,0,0,0.15));
+    animation: flutuarBoneca 3s ease-in-out infinite;
+}
+
+@keyframes flutuarBoneca {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* RESPONSIVIDADE (CELULAR) */
+@media (max-width: 768px) {
+    footer { padding-bottom: 180px; }
+    
+    /* No celular, coloca um embaixo do outro no meio */
+    .footer-download-img {
+        right: 50%;
+        transform: translateX(50%); /* Centraliza a boneca no celular */
+        bottom: 10px;
+    }
+    
+    .footer-download-link {
+        bottom: 150px; /* Botão fica bem acima da boneca */
+    }
+}
