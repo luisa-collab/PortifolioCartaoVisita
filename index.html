@@ -1,290 +1,570 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luisa Laura | Desenvolvedora & Analista</title>
-    
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Allura&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luisa Laura | Full Stack Developer</title>
+  <meta name="description" content="Portfólio de Luisa Laura — Desenvolvedora Full Stack especialista em segurança de aplicações, análise de dados e interfaces de alto impacto.">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">Luisa Laura</a>
-            <button id="theme-toggle" class="theme-button">
-                <i class="fa-solid fa-sun"></i> 
-            </button>
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- PARTICLES -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a href="#" class="nav-logo">Luisa Laura</a>
+  <div class="nav-links">
+    <a href="#projects">Projetos</a>
+    <a href="#certs">Certificações</a>
+    <a href="#contact">Contato</a>
+  </div>
+  <a href="img/LuisaLaura_CV.pdf" download class="nav-cv">
+    <i class="fa-solid fa-arrow-down"></i> Currículo
+  </a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="#projects">Projetos</a>
+  <a href="#certs">Certificações</a>
+  <a href="#contact">Contato</a>
+  <a href="img/LuisaLaura_CV.pdf" download>Currículo</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg-num" aria-hidden="true">01</div>
+
+  <div class="hero-tag reveal">
+    <span class="hero-tag-line"></span>
+    Disponível para oportunidades
+  </div>
+
+  <h1 class="hero-title reveal reveal-delay-1">
+    Luisa <em>Laura.</em>
+  </h1>
+  <p class="hero-title-2 reveal reveal-delay-2">
+    Full Stack Developer.
+  </p>
+
+  <p class="reveal reveal-delay-3" style="font-size:15px; color:var(--muted); font-weight:500; letter-spacing:0.3px; margin-bottom: 8px;">
+    Especialista em
+    <span class="typewriter-wrap">
+      <span class="typewriter-text" id="typewriter"></span><span class="typewriter-cursor"></span>
+    </span>
+  </p>
+
+  <div class="hero-bottom reveal reveal-delay-4">
+    <p class="hero-sub">
+      Transformo requisitos complexos em produtos digitais que <strong>as pessoas realmente usam.</strong> Do banco de dados à interface, com foco em segurança, dados e performance.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-fill">
+        <span><i class="fa-solid fa-envelope"></i></span>
+        <span>Entrar em contato</span>
+      </a>
+      <a href="https://github.com/luisa-collab" target="_blank" rel="noopener noreferrer" class="btn-outline">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="h-stat">
+        <div class="h-stat-num">6<span>+</span></div>
+        <div class="h-stat-label">Projetos</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num">9<span>+</span></div>
+        <div class="h-stat-label">Certs</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num">12<span>+</span></div>
+        <div class="h-stat-label">Techs</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <i class="fa-solid fa-arrow-down"></i>
+    scroll
+  </div>
+</header>
+
+<!-- MARQUEE STACK -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item hi">Java <span class="marquee-dot"></span></span>
+    <span class="marquee-item">React <span class="marquee-dot"></span></span>
+    <span class="marquee-item hi">Node.js <span class="marquee-dot"></span></span>
+    <span class="marquee-item">JavaScript <span class="marquee-dot"></span></span>
+    <span class="marquee-item hi">AWS <span class="marquee-dot"></span></span>
+    <span class="marquee-item">MySQL <span class="marquee-dot"></span></span>
+    <span class="marquee-item">PostgreSQL <span class="marquee-dot"></span></span>
+    <span class="marquee-item hi">Cybersecurity <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Linux <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Git <span class="marquee-dot"></span></span>
+    <span class="marquee-item hi">Full Stack <span class="marquee-dot"></span></span>
+    <span class="marquee-item">PHP <span class="marquee-dot"></span></span>
+    <!-- duplicado para loop infinito -->
+    <span class="marquee-item hi">Java <span class="marquee-dot"></span></span>
+    <span class="marquee-item">React <span class="marquee-dot"></span></span>
+    <span class="marquee-item hi">Node.js <span class="marquee-dot"></span></span>
+    <span class="marquee-item">JavaScript <span class="marquee-dot"></span></span>
+    <span class="marquee-item hi">AWS <span class="marquee-dot"></span></span>
+    <span class="marquee-item">MySQL <span class="marquee-dot"></span></span>
+    <span class="marquee-item">PostgreSQL <span class="marquee-dot"></span></span>
+    <span class="marquee-item hi">Cybersecurity <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Linux <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Git <span class="marquee-dot"></span></span>
+    <span class="marquee-item hi">Full Stack <span class="marquee-dot"></span></span>
+    <span class="marquee-item">PHP <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<main>
+
+  <!-- PROJETOS -->
+  <section id="projects" class="section">
+    <div class="section-label reveal">
+      Projetos em Destaque
+      <span class="section-number">01 / 03</span>
+    </div>
+
+    <div class="projects-intro">
+      <h2 class="projects-heading reveal reveal-delay-1">
+        O que<br><em>construí.</em>
+      </h2>
+      <a href="https://github.com/luisa-collab" target="_blank" rel="noopener noreferrer" class="projects-all-link reveal reveal-delay-2">
+        Ver todos no GitHub <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="bento">
+
+      <a href="https://github.com/luisa-collab/cofre-senhas.git" target="_blank" rel="noopener noreferrer" class="bento-card reveal">
+        <div class="bento-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+        <div>
+          <span class="bento-tag">Segurança</span>
+          <h3 class="bento-title">Gerenciador de Senhas</h3>
+          <p class="bento-desc">Aplicação desktop para armazenamento seguro de credenciais com criptografia AES-256. Interface intuitiva, cofre protegido.</p>
+          <div class="bento-stack">
+            <span class="bento-tech">Java</span>
+            <span class="bento-tech">AES-256</span>
+            <span class="bento-tech">Desktop</span>
+            <span class="bento-tech">Criptografia</span>
+          </div>
         </div>
-    </nav>
+      </a>
 
-    <header class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <p class="greeting">Olá, visitante <span class="wave">👋</span></p>
-            <h1>Meu nome é <strong>Luisa.</strong></h1>
-            <p class="tagline">
-            Desenvolvedora <strong>Full Stack</strong> especialista transformar dados complexos em interfaces intuitivas e de alto impacto. <br><strong>Vamos conversar?</strong>
-            </p>
-            <div class="social-icons">
-                <a href="https://github.com/luisa-collab" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="http://www.linkedin.com/in/luisa-laura-a94634346" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="mailto:luisa.laura.envio@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-            </div>
+      <a href="https://github.com/luisa-collab/CurrencyNexus.git" target="_blank" rel="noopener noreferrer" class="bento-card reveal reveal-delay-1">
+        <div class="bento-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+        <div>
+          <span class="bento-tag">Finanças</span>
+          <h3 class="bento-title">Nexus de Moeda</h3>
+          <p class="bento-desc">Monitoramento de câmbio em tempo real com visualizações D3.js e dados de mercado ao vivo.</p>
+          <div class="bento-stack">
+            <span class="bento-tech">React</span>
+            <span class="bento-tech">D3.js</span>
+            <span class="bento-tech">API REST</span>
+          </div>
         </div>
-    </header>
+      </a>
 
-    <section id="tech" class="tech-section">
-        <div class="swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><div class="tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"><span class="tech-name">Java</span></div></div>
-                <div class="swiper-slide"><div class="tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C"><span class="tech-name">C</span></div></div>
-                <div class="swiper-slide"><div class="tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS"><span class="tech-name">JS</span></div></div>
-                <div class="swiper-slide"><div class="tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><span class="tech-name">HTML</span></div></div>
-                <div class="swiper-slide"><div class="tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><span class="tech-name">CSS</span></div></div>
-                <div class="swiper-slide"><div class="tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"><span class="tech-name">React</span></div></div>
-                <div class="swiper-slide"><div class="tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" style="filter: invert(0.5);" alt="GitHub"><span class="tech-name">GitHub</span></div></div>
-                <div class="swiper-slide"><div class="tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"><span class="tech-name">Git</span></div></div>
-                <div class="swiper-slide"><div class="tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"><span class="tech-name">MySQL</span></div></div>
-                <div class="swiper-slide"><div class="tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"><span class="tech-name">Postgre</span></div></div>
-                <div class="swiper-slide"><div class="tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"><span class="tech-name">Linux</span></div></div>
-                <div class="swiper-slide"><div class="tech-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node"><span class="tech-name">Node</span></div></div>
-            </div>
-        </div>    
-    </section>
-
-    <main class="cyber-bg">
-        
-        <section id="about" class="about-section">
-            
-            <div class="about-wrapper">
-                <div class="about-image-container">
-                    <img src="img/img.luisa.laura.png" alt="Foto Profissional Luisa" class="about-photo">
-                    <span class="author-caption">Autora dos Projetos</span>
-
-                    <div class="mini-certs">
-                        <i class="fa-brands fa-aws" title="AWS"></i>
-                        <i class="fa-brands fa-java" title="Java"></i>
-                        <i class="fa-solid fa-shield-halved" title="Security"></i>
-                    </div>
-                </div>
-<div class="projects-container">
-    <h2 class="projects-title">Projetos em Destaque</h2>
-    
-    <div class="projects-grid-3d">
-        
-        <div class="redflag-card" data-tilt>
-            <img src="img/guardiaoSenhas.jpg.png" alt="Print Cofre Senhas" class="project-img">
-            <div class="card-content">
-                <h3>Gerenciador de Senhas</h3>
-                <p>Aplicação desktop para armazenamento seguro de senhas com criptografia AES.</p>
-                <a href="https://github.com/luisa-collab/cofre-senhas.git" target="_blank" rel="noopener noreferrer" class="card-link">Ver Código <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+      <a href="#" class="bento-card reveal">
+        <div class="bento-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+        <div>
+          <span class="bento-tag">CLI / Segurança</span>
+          <h3 class="bento-title">Neon Guardian</h3>
+          <p class="bento-desc">Ferramenta CLI que detecta vulnerabilidades em sistemas e senhas em tempo real.</p>
+          <div class="bento-stack">
+            <span class="bento-tech">CLI</span>
+            <span class="bento-tech">Linux</span>
+          </div>
         </div>
+      </a>
 
-        <div class="redflag-card" data-tilt>
-            <img src="img/currentNexus.jpg.png" alt="Print Nexus de Moeda" class="project-img">
-            <div class="card-content">
-                <h3>Nexus de Moeda</h3>
-                <p>Monitoramento de Câmbio em Tempo Real com React e D3.js.</p>
-                <a href="https://github.com/luisa-collab/CurrencyNexus.git" target="_blank" rel="noopener noreferrer" class="card-link">Ver Código <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+      <a href="https://github.com/luisa-collab/Segmentacao-Clientes-BI.git" target="_blank" rel="noopener noreferrer" class="bento-card reveal reveal-delay-1">
+        <div class="bento-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+        <div>
+          <span class="bento-tag">Dados / BI</span>
+          <h3 class="bento-title">Consultor de Bolso</h3>
+          <p class="bento-desc">Segmentação comportamental de clientes para personalização de serviços financeiros.</p>
+          <div class="bento-stack">
+            <span class="bento-tech">Python</span>
+            <span class="bento-tech">ML</span>
+          </div>
         </div>
+      </a>
 
-        <div class="redflag-card" data-tilt>
-            <img src="img/neonGuardian.jpg.png" alt="Print Game Security" class="project-img">
-            <div class="card-content">
-                <h3>Neon Guardian CLI</h3>
-                <p>Uma ferramenta CLI que analisa vulnerabilidades em sistemas e senhas em tempo real.</p>
-                <a href="#" target="_blank" rel="noopener noreferrer" class="card-link">Ver Código <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+      <a href="https://github.com/luisa-collab/Biopass.git" target="_blank" rel="noopener noreferrer" class="bento-card reveal reveal-delay-2">
+        <div class="bento-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+        <div>
+          <span class="bento-tag">Biometria</span>
+          <h3 class="bento-title">BioPass</h3>
+          <p class="bento-desc">Autenticação bancária baseada em Keystroke Dynamics — segurança pelo jeito que você digita.</p>
+          <div class="bento-stack">
+            <span class="bento-tech">Java</span>
+            <span class="bento-tech">Banking</span>
+          </div>
         </div>
+      </a>
 
-        <div class="redflag-card" data-tilt>
-            <img src="img/WhatsApp Image 2025-12-25 at 01.55.34.jpeg" alt="Print Consultor" class="project-img">
-            <div class="card-content">
-                <h3>Consultor de Bolso</h3>
-                <p>Segmentação Comportamental de Clientes para personalização de serviços financeiros.</p>
-                <a href="https://github.com/luisa-collab/Segmentacao-Clientes-BI.git" target="_blank" rel="noopener noreferrer" class="card-link">Ver Código <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+      <a href="https://github.com/luisa-collab/balcao-tech.git" target="_blank" rel="noopener noreferrer" class="bento-card reveal reveal-delay-1">
+        <div class="bento-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+        <div class="bento-left">
+          <span class="bento-tag">Full Stack</span>
+          <h3 class="bento-title">Blog Balcão Tech</h3>
+          <p class="bento-desc">Sistema de blog completo para divulgação de tecnologia e inovação — do banco ao frontend.</p>
+          <div class="bento-stack">
+            <span class="bento-tech">PHP</span>
+            <span class="bento-tech">JS</span>
+            <span class="bento-tech">MySQL</span>
+            <span class="bento-tech">HTML/CSS</span>
+          </div>
         </div>
-
-        <div class="redflag-card" data-tilt>
-            <img src="img/biopass.png" alt="Print BioPass" class="project-img">
-            <div class="card-content">
-                <h3>BioPass: Biometria</h3>
-                <p>Segurança Bancária Invisível baseada em Dinâmica de Digitação (Keystroke Dynamics).</p>
-                <a href="https://github.com/luisa-collab/Biopass.git" target="_blank" rel="noopener noreferrer" class="card-link">Ver Código <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+        <div class="bento-right" aria-hidden="true">
+          Full<br>Stack
         </div>
-
-<div class="redflag-card" data-tilt>
-            <img src="img/paracv.png" alt="Print Blog Balcão Tech" class="project-img">
-            <div class="card-content">
-                <h3>Blog Balcão Tech</h3>
-                <p>Sistema de Blog para divulgação de tecnologia e inovação.</p>
-                <a href="https://github.com/luisa-collab/balcao-tech.git" target="_blank" rel="noopener noreferrer" class="card-link">Ver Código <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
+      </a>
 
     </div>
-</div>
-            </div>
-        </section>
+  </section>
 
-        <section id="certificates">
-            <h2 class="section-title"><i class="fa-solid fa-award"></i> Certificações & Skills</h2>
-            <div class="certificates-grid">
-                <div class="cert-card">
-                    <div class="cert-icon"><i class="fa-brands fa-aws"></i></div>
-                    <h3 class="cert-title">AWS Cloud Practitioner</h3>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon"><i class="fa-brands fa-java"></i></div>
-                    <h3 class="cert-title">Java Completo</h3>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3 class="cert-title">Cybersecurity Basics</h3>
-                </div>
+  <!-- CERTIFICAÇÕES -->
+  <section id="certs">
+    <div class="section-inner">
+      <div class="section-label reveal" style="color:rgba(255,255,255,0.35);">
+        Certificações & Skills
+        <span class="section-number" style="color:rgba(255,255,255,0.15);">02 / 03</span>
+      </div>
+      <h2 class="certs-heading reveal reveal-delay-1">O que<br><em>aprendi.</em></h2>
 
-            </div>
-        </section>
+      <div class="certs-list">
 
-        <section id="certificates-prints">
-        
-            <div class="swiper myCertSwiper">
-                <div class="swiper-wrapper">
-                    
-                    <div class="swiper-slide">
-                        <a href="certificados/cert-nuvemAWS.png" target="_blank" class="cert-print-card">
-                            <div class="print-img-container">
-                                <img src="certificados/cert-nuvemAWS.png" alt="AWS Cloud">
-                            </div>
-                            <div class="print-title">
-                             <h4>Nuvem AWS</h4>
-                         </div>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="certificados/cert-estrutura-dados.png" target="_blank" class="cert-print-card">
-                            <div class="print-img-container">
-                                <img src="certificados/cert-estrutura-dados.png" alt="Estrutura de Dados">
-                            </div>
-                            <div class="print-title">
-                             <h4>Estrutura de Dados</h4>
-                         </div>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="certificados/cert-dese-soft-php.png" target="_blank" class="cert-print-card">
-                            <div class="print-img-container">
-                                <img src="certificados/cert-dese-soft-php.png" alt="Dev Software">
-                            </div>
-                            <div class="print-title">
-                             <h4>Desenvolvimento de Software PHP</h4>
-                         </div>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="certificados/cert-debugphp.png" target="_blank" class="cert-print-card">
-                            <div class="print-img-container">
-                                <img src="certificados/cert-debugphp.png" alt="Debug PHP">
-                            </div>
-                            <div class="print-title">
-                             <h4>Debug PHP</h4>
-                         </div>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="certificados/cert-clienteServer.png" target="_blank" class="cert-print-card">
-                            <div class="print-img-container">
-                                <img src="certificados/cert-clienteServer.png" alt="Cliente Servidor">
-                            </div>
-                            <div class="print-title">
-                             <h4>Cliente Server</h4>
-                         </div>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="certificados/cert-autenticacao.png" target="_blank" class="cert-print-card">
-                            <div class="print-img-container">
-                                <img src="certificados/cert-autenticacao.png" alt="Autenticação">
-                            </div>
-                            <div class="print-title">
-                             <h4>Autenticação</h4>
-                         </div>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="certificados/cert-logicaProgramacao.png" target="_blank" class="cert-print-card">
-                            <div class="print-img-container">
-                                <img src="certificados/cert-logicaProgramacao.png" alt="Lógica">
-                            </div>
-                            <div class="print-title">
-                             <h4>Lógica Programação</h4>
-                         </div>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="certificados/cert-estruturaJson.png" target="_blank" class="cert-print-card">
-                            <div class="print-img-container">
-                                <img src="certificados/cert-estruturaJson.png" alt="JSON">
-                            </div>
-                            <div class="print-title">
-                             <h4>Estrutura de dados Json</h4>
-                         </div>
-                        </a>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <a href="certificados/cert-github.png" target="_blank" class="cert-print-card">
-                            <div class="print-img-container">
-                                <img src="certificados/cert-github.png" alt="GitHub">
-                            </div>
-                            <div class="print-title">
-                             <h4>Git-Hub Formação</h4>
-                         </div>
-                        </a>
-                    </div>
-
-                </div>
-                
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </section>
-
-    </main>
-    
-    <footer>
-        <p>&copy; 2024 Luisa Laura. Desenvolvido com foco e inovação.</p>
-        
-        <div class="footer-download-container">
-            <a href="img/LuisaLaura_CV.pdf" download class="footer-download-link">
-                Baixe aqui meu currículo 
-                <i class="fa-solid fa-arrow-down"></i>
-            </a>
-            
-            <img src="img/cartoonMeu.png" alt="Luisa Correndo" class="footer-download-img">
+        <div class="cert-row reveal">
+          <span class="cert-num">01</span>
+          <div class="cert-icon-wrap"><i class="fa-brands fa-aws"></i></div>
+          <div class="cert-name-wrap">
+            <div class="cert-name">AWS Cloud Practitioner</div>
+            <div class="cert-org">Amazon Web Services</div>
+          </div>
+          <a href="certificados/cert-nuvemAWS.png" target="_blank" class="cert-action">
+            Ver certificado <i class="fa-solid fa-arrow-up-right"></i>
+          </a>
         </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="script.js"></script>
+        <div class="cert-row reveal reveal-delay-1">
+          <span class="cert-num">02</span>
+          <div class="cert-icon-wrap"><i class="fa-brands fa-java"></i></div>
+          <div class="cert-name-wrap">
+            <div class="cert-name">Java Completo</div>
+            <div class="cert-org">Certificação de Linguagem</div>
+          </div>
+          <span class="cert-action" style="color:var(--coral);">Concluído ✓</span>
+        </div>
+
+        <div class="cert-row reveal reveal-delay-2">
+          <span class="cert-num">03</span>
+          <div class="cert-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="cert-name-wrap">
+            <div class="cert-name">Cybersecurity Basics</div>
+            <div class="cert-org">Fundamentos de Segurança</div>
+          </div>
+          <span class="cert-action" style="color:var(--coral);">Concluído ✓</span>
+        </div>
+
+        <div class="cert-row reveal">
+          <span class="cert-num">04</span>
+          <div class="cert-icon-wrap"><i class="fa-solid fa-diagram-project"></i></div>
+          <div class="cert-name-wrap">
+            <div class="cert-name">Estrutura de Dados</div>
+            <div class="cert-org">Algoritmos & Estruturas</div>
+          </div>
+          <a href="certificados/cert-estrutura-dados.png" target="_blank" class="cert-action">
+            Ver certificado <i class="fa-solid fa-arrow-up-right"></i>
+          </a>
+        </div>
+
+        <div class="cert-row reveal reveal-delay-1">
+          <span class="cert-num">05</span>
+          <div class="cert-icon-wrap"><i class="fa-brands fa-github"></i></div>
+          <div class="cert-name-wrap">
+            <div class="cert-name">GitHub Formação</div>
+            <div class="cert-org">Git & Controle de Versão</div>
+          </div>
+          <a href="certificados/cert-github.png" target="_blank" class="cert-action">
+            Ver certificado <i class="fa-solid fa-arrow-up-right"></i>
+          </a>
+        </div>
+
+        <div class="cert-row reveal reveal-delay-2">
+          <span class="cert-num">06</span>
+          <div class="cert-icon-wrap"><i class="fa-solid fa-lock"></i></div>
+          <div class="cert-name-wrap">
+            <div class="cert-name">Autenticação & Auth</div>
+            <div class="cert-org">Segurança em Aplicações</div>
+          </div>
+          <a href="certificados/cert-autenticacao.png" target="_blank" class="cert-action">
+            Ver certificado <i class="fa-solid fa-arrow-up-right"></i>
+          </a>
+        </div>
+
+        <div class="cert-row reveal">
+          <span class="cert-num">07</span>
+          <div class="cert-icon-wrap"><i class="fa-solid fa-code"></i></div>
+          <div class="cert-name-wrap">
+            <div class="cert-name">Lógica de Programação</div>
+            <div class="cert-org">Fundamentos</div>
+          </div>
+          <a href="certificados/cert-logicaProgramacao.png" target="_blank" class="cert-action">
+            Ver certificado <i class="fa-solid fa-arrow-up-right"></i>
+          </a>
+        </div>
+
+        <div class="cert-row reveal reveal-delay-1">
+          <span class="cert-num">08</span>
+          <div class="cert-icon-wrap"><i class="fa-solid fa-server"></i></div>
+          <div class="cert-name-wrap">
+            <div class="cert-name">Cliente & Servidor</div>
+            <div class="cert-org">Arquitetura Web</div>
+          </div>
+          <a href="certificados/cert-clienteServer.png" target="_blank" class="cert-action">
+            Ver certificado <i class="fa-solid fa-arrow-up-right"></i>
+          </a>
+        </div>
+
+        <div class="cert-row reveal reveal-delay-2">
+          <span class="cert-num">09</span>
+          <div class="cert-icon-wrap"><i class="fa-solid fa-brackets-curly"></i></div>
+          <div class="cert-name-wrap">
+            <div class="cert-name">Estrutura de Dados JSON</div>
+            <div class="cert-org">Formatos & APIs</div>
+          </div>
+          <a href="certificados/cert-estruturaJson.png" target="_blank" class="cert-action">
+            Ver certificado <i class="fa-solid fa-arrow-up-right"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contact">
+    <div class="contact-bg-text" aria-hidden="true">Contato</div>
+    <div class="contact-label reveal">Vamos conversar</div>
+    <h2 class="contact-title reveal reveal-delay-1">
+      Pronta para<br><em>o próximo nível.</em>
+    </h2>
+    <p class="contact-sub reveal reveal-delay-2">
+      Aberta a projetos freelance, posições CLT e boas conversas sobre tecnologia. Vamos construir algo incrível juntos.
+    </p>
+    <div class="contact-actions reveal reveal-delay-3">
+      <a href="mailto:luisa.laura.envio@gmail.com" class="btn-fill">
+        <span><i class="fa-solid fa-envelope"></i></span>
+        <span>luisa.laura.envio@gmail.com</span>
+      </a>
+      <a href="img/LuisaLaura_CV.pdf" download class="btn-outline">
+        <i class="fa-solid fa-arrow-down"></i> Baixar CV
+      </a>
+    </div>
+    <div class="contact-social reveal reveal-delay-4">
+      <a href="https://github.com/luisa-collab" target="_blank" rel="noopener noreferrer" class="social-pill">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+      <a href="http://www.linkedin.com/in/luisa-laura-a94634346" target="_blank" rel="noopener noreferrer" class="social-pill">
+        <i class="fa-brands fa-linkedin"></i> LinkedIn
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2024 <em>Luisa Laura</em>. Desenvolvido com foco e inovação.</span>
+  <div class="footer-right">
+    <a href="#projects">Projetos</a>
+    <a href="#certs">Certificações</a>
+    <a href="mailto:luisa.laura.envio@gmail.com">Contato</a>
+  </div>
+</footer>
+
+<script>
+// ── CURSOR CUSTOM ──
+const dot  = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left  = mx + 'px';
+  dot.style.top   = my + 'px';
+});
+
+(function animateRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(animateRing);
+})();
+
+document.querySelectorAll('a, button, .bento-card, .cert-row').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
+  el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
+});
+document.addEventListener('mousedown', () => ring.classList.add('clicking'));
+document.addEventListener('mouseup',   () => ring.classList.remove('clicking'));
+
+// ── PARTICLES ──
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+
+function resize() {
+  W = canvas.width  = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+function Particle() {
+  this.x  = Math.random() * W;
+  this.y  = Math.random() * H;
+  this.vx = (Math.random() - 0.5) * 0.3;
+  this.vy = (Math.random() - 0.5) * 0.3;
+  this.r  = Math.random() * 1.5 + 0.3;
+  this.a  = Math.random() * 0.4 + 0.05;
+}
+Particle.prototype.update = function() {
+  this.x += this.vx; this.y += this.vy;
+  if (this.x < 0) this.x = W;
+  if (this.x > W) this.x = 0;
+  if (this.y < 0) this.y = H;
+  if (this.y > H) this.y = 0;
+};
+
+for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+function drawParticles() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => {
+    p.update();
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 77, 46, ${p.a})`;
+    ctx.fill();
+  });
+  // lines between close particles
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const d  = Math.sqrt(dx*dx + dy*dy);
+      if (d < 120) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(255, 77, 46, ${0.06 * (1 - d/120)})`;
+        ctx.lineWidth = 0.6;
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// ── TYPEWRITER ──
+const words = ['Segurança de Aplicações', 'Full Stack Development', 'Análise de Dados', 'Interfaces de Alto Impacto', 'Soluções que Escalam'];
+let wi = 0, ci = 0, deleting = false;
+const el = document.getElementById('typewriter');
+
+function typeWrite() {
+  const word = words[wi];
+  if (!deleting) {
+    el.textContent = word.slice(0, ++ci);
+    if (ci === word.length) { deleting = true; setTimeout(typeWrite, 1800); return; }
+    setTimeout(typeWrite, 65);
+  } else {
+    el.textContent = word.slice(0, --ci);
+    if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; setTimeout(typeWrite, 300); return; }
+    setTimeout(typeWrite, 35);
+  }
+}
+typeWrite();
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── MOBILE MENU ──
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// ── NAV blend mode flip on dark sections ──
+const darkSections = ['#certs'];
+const navEl = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const certsEl = document.getElementById('certs');
+  if (!certsEl) return;
+  const certsTop    = certsEl.offsetTop;
+  const certsBottom = certsTop + certsEl.offsetHeight;
+  if (scrollY + 60 > certsTop && scrollY < certsBottom) {
+    navEl.style.mixBlendMode = 'normal';
+    navEl.style.background   = 'rgba(10,9,8,0.95)';
+    navEl.querySelector('.nav-logo').style.color = '#F5F0E8';
+    navEl.querySelectorAll('.nav-links a').forEach(a => a.style.color = 'rgba(245,240,232,0.5)');
+  } else {
+    navEl.style.mixBlendMode = 'multiply';
+    navEl.style.background   = '';
+    navEl.querySelector('.nav-logo').style.color = '';
+    navEl.querySelectorAll('.nav-links a').forEach(a => a.style.color = '');
+  }
+});
+
+// ── MAGNETIC BUTTONS ──
+document.querySelectorAll('.btn-fill, .btn-outline').forEach(btn => {
+  btn.addEventListener('mousemove', function(e) {
+    const rect = this.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top  + rect.height / 2;
+    const dx = (e.clientX - cx) * 0.25;
+    const dy = (e.clientY - cy) * 0.25;
+    this.style.transform = `translate(${dx}px, ${dy}px)`;
+  });
+  btn.addEventListener('mouseleave', function() {
+    this.style.transform = '';
+  });
+});
+</script>
 </body>
 </html>
